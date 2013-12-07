@@ -1,5 +1,5 @@
 -- for CCLuaEngine traceback
-function __G__TRACKBACK__(msg)
+--[[function __G__TRACKBACK__(msg)
     print("----------------------------------------")
     print("LUA ERROR: " .. tostring(msg) .. "\n")
     print(debug.traceback())
@@ -16,3 +16,13 @@ local function main()
 end
 
 xpcall(main, __G__TRACKBACK__)
+--]]
+
+function __G__TRACKBACK__(errorMessage)
+    print("----------------------------------------")
+    print("LUA ERROR: " .. tostring(errorMessage) .. "\n")
+    print(debug.traceback("", 2))
+    print("----------------------------------------")
+end
+
+require("app.MyApp").new():run()
