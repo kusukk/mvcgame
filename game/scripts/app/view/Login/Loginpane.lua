@@ -6,4 +6,9 @@ function LoginPane:new()
 	-- body
 end
 
+function LoginPane.testPrint()
+	-- body
+	print("hello Loginpane")
+end
+
 return LoginPane

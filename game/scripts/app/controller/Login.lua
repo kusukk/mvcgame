@@ -19,7 +19,9 @@ end
 
 function meta:handleNotification(notification)
 	if notification.name == Event.EVENT_START_APP then
-		print("Controller get notice Event.EVENT_START_APP")
+		--print("Controller get notice Event.EVENT_START_APP")
+		--puts(notification)
+		self.viewComponent.testPrint()
 	end
 end
 
