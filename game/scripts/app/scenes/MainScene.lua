@@ -1,3 +1,4 @@
+local LoginPane = import("..view.Login.Loginpane")
 
 local MainScene = class("MainScene", function()
     return display.newScene("MainScene")
@@ -7,6 +8,8 @@ function MainScene:ctor()
     ui.newTTFLabel({text = "Hello, World", size = 64, align = ui.TEXT_ALIGN_CENTER})
         :pos(display.cx, display.cy)
         :addTo(self)
+    self.loginPane = LoginPane.new()
+    self:addChild(self.loginPane)
 end
 
 function MainScene:onEnter()

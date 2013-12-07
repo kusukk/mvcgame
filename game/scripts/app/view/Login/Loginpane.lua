@@ -1,42 +1,29 @@
 if kode == nil then return end
+require("gameconfig")
 
 local LoginPane = class("LoginPane", function()
-    return display.newScene("LoginPane")
+    return display.newLayer()
 end)
 
---function LoginPane:new()
-	-- body
---end
-
 function LoginPane:ctor()
-    ui.newTTFLabel({text = "Hello, World", size = 64, align = ui.TEXT_ALIGN_CENTER})
-        :pos(display.cx, display.cy)
+    ui.newTTFLabel({text = "Hello, LoginPane", size = 32, align = ui.TEXT_ALIGN_CENTER})
+        :pos(display.cx, display.cy + 200)
         :addTo(self)
-end
-
-function LoginPane:onEnter()
-    if device.platform == "android" then
-        -- avoid unmeant back
-        self:performWithDelay(function()
-            -- keypad layer, for android
-            local layer = display.newLayer()
-            layer:addKeypadEventListener(function(event)
-                if event == "back" then app.exit() end
-            end)
-            self:addChild(layer)
-
-            layer:setKeypadEnabled(true)
-        end, 0.5)
-    end
-end
-
-function LoginPane:onExit()
+    print("LoginPane ctor")
 end
 
 function LoginPane.testPrint()
-	-- body
+    NetworkLogic = require("network.NetworkMgr").new()
+    NetworkLogic:connect_server(Global.SOCKET_IP, Global.SOCKET_PORT)
 	print("hello Loginpane")
-	--display.replaceScene(self)
+end
+
+function LoginPane:onEnter()
+    self:setTouchEnabled(true)
+end
+
+function LoginPane:onExit()
+    self:removeAllEventListeners()
 end
 
 return LoginPane
