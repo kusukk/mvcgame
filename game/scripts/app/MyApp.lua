@@ -19,15 +19,15 @@ function MyApp:run()
     require "app.register"      -- register controllers
 
     appFacade:startup()     -- startup
-    self:enterScene("MainScene")
+    --self:enterScene("MainScene")
 
-    --MyApp.enterGameLoginScene()
+    MyApp.enterGameLoginScene()
 end
 
 function MyApp:enterGameLoginScene()
-	-- body
 	local scene = CCScene:create()
-	--local layer =
+    local layer = require("app.view.Login.Loginpane").new()
+    scene:addChild(layer)
 	display.replaceScene(scene) 
 end
 
