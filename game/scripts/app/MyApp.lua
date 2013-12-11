@@ -29,6 +29,10 @@ function MyApp:enterGameLoginScene()
     local layer = require("app.view.Login.Loginpane").new()
     scene:addChild(layer)
 	display.replaceScene(scene) 
+    --[[local scene = CCScene:create()
+    local node = SceneReader:sharedSceneReader():createNodeWithSceneFile("Resources/loginScenes.json")
+    scene:addChild(node)
+    display.replaceScene(scene)]]--
 end
 
 return MyApp
